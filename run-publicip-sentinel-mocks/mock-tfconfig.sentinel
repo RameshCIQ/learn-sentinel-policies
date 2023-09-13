@@ -1,0 +1,332 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"modules": {
+			"pip": {
+				"config": {
+					"pip_allocation_method": "Static",
+					"pip_name":              "test_trpolicypip",
+					"tags": {
+						"environment": "prod",
+					},
+				},
+				"references": {
+					"location": [
+						"module.rg.location",
+						"module.rg",
+					],
+					"pip_allocation_method": [],
+					"pip_name":              [],
+					"resource_group_name": [
+						"module.rg.rg_name",
+						"module.rg",
+					],
+					"tags": [],
+				},
+				"source":  "../public_ip",
+				"version": "",
+			},
+			"rg": {
+				"config": {
+					"location": "eastus",
+					"rg_name":  "test-trpolicy",
+				},
+				"references": {
+					"location": [],
+					"rg_name":  [],
+				},
+				"source":  "../rg",
+				"version": "",
+			},
+		},
+		"outputs": {},
+		"providers": {
+			"azurerm": {
+				"alias": {
+					"": {
+						"config": {
+							"client_id":     "37bb8605-2b6d-481b-9904-256d83eac90a",
+							"client_secret": "Yph8Q~mw~R9RPdvUFicf9ieKS4ORrcpfJZmwlcfQ",
+							"features": [
+								{},
+							],
+							"skip_provider_registration": true,
+							"subscription_id":            "f2462315-1994-4dbf-abfc-701a023665b8",
+							"tenant_id":                  "a59d6e59-864b-4af8-8ea0-b4eb441cfbd9",
+						},
+						"references": {
+							"client_id":     [],
+							"client_secret": [],
+							"features": [
+								{},
+							],
+							"skip_provider_registration": [],
+							"subscription_id":            [],
+							"tenant_id":                  [],
+						},
+						"version": "3.71.0",
+					},
+				},
+				"config": {
+					"client_id":     "37bb8605-2b6d-481b-9904-256d83eac90a",
+					"client_secret": "Yph8Q~mw~R9RPdvUFicf9ieKS4ORrcpfJZmwlcfQ",
+					"features": [
+						{},
+					],
+					"skip_provider_registration": true,
+					"subscription_id":            "f2462315-1994-4dbf-abfc-701a023665b8",
+					"tenant_id":                  "a59d6e59-864b-4af8-8ea0-b4eb441cfbd9",
+				},
+				"references": {
+					"client_id":     [],
+					"client_secret": [],
+					"features": [
+						{},
+					],
+					"skip_provider_registration": [],
+					"subscription_id":            [],
+					"tenant_id":                  [],
+				},
+				"version": "3.71.0",
+			},
+		},
+		"resources": {},
+		"variables": {
+			"location": {
+				"default":     null,
+				"description": "",
+			},
+			"rg_name": {
+				"default":     null,
+				"description": "",
+			},
+		},
+	},
+
+	"module.pip": {
+		"data":    {},
+		"modules": {},
+		"outputs": {
+			"id": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"azurerm_public_ip.pip.id",
+					"azurerm_public_ip.pip",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+		},
+		"providers": {},
+		"resources": {
+			"azurerm_public_ip": {
+				"pip": {
+					"config":       {},
+					"provisioners": null,
+					"references": {
+						"allocation_method": [
+							"var.pip_allocation_method",
+						],
+						"domain_name_label": [
+							"var.pip_domain_name_label",
+						],
+						"edge_zone": [
+							"var.pip_edge_zone",
+						],
+						"idle_timeout_in_minutes": [
+							"var.pip_idle_timeout_in_minutes",
+						],
+						"ip_tags": [
+							"var.pip_ip_tags",
+						],
+						"ip_version": [
+							"var.pip_ip_version",
+						],
+						"location": [
+							"var.location",
+						],
+						"name": [
+							"var.pip_name",
+						],
+						"public_ip_prefix_id": [
+							"var.public_ip_prefix_id",
+						],
+						"resource_group_name": [
+							"var.resource_group_name",
+						],
+						"reverse_fqdn": [
+							"var.reverse_fqdn",
+						],
+						"sku": [
+							"var.pip_sku",
+						],
+						"sku_tier": [
+							"var.pip_sku_tier",
+						],
+						"tags": [
+							"var.tags",
+						],
+						"zones": [
+							"var.pip_zones",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"location": {
+				"default":     null,
+				"description": "",
+			},
+			"pip_allocation_method": {
+				"default":     "Static",
+				"description": "Possible values are Static or Dynamic.",
+			},
+			"pip_domain_name_label": {
+				"default":     null,
+				"description": "",
+			},
+			"pip_edge_zone": {
+				"default":     null,
+				"description": "",
+			},
+			"pip_idle_timeout_in_minutes": {
+				"default":     null,
+				"description": "4 to 20 minutes",
+			},
+			"pip_ip_tags": {
+				"default":     {},
+				"description": "",
+			},
+			"pip_ip_version": {
+				"default":     "IPv4",
+				"description": "",
+			},
+			"pip_name": {
+				"default":     null,
+				"description": "",
+			},
+			"pip_sku": {
+				"default":     "Standard",
+				"description": "",
+			},
+			"pip_sku_tier": {
+				"default":     "Regional",
+				"description": "",
+			},
+			"pip_zones": {
+				"default":     [],
+				"description": "",
+			},
+			"public_ip_prefix_id": {
+				"default":     null,
+				"description": "",
+			},
+			"resource_group_name": {
+				"default":     null,
+				"description": "",
+			},
+			"reverse_fqdn": {
+				"default":     null,
+				"description": "",
+			},
+			"tags": {
+				"default":     null,
+				"description": "",
+			},
+		},
+	},
+
+	"module.rg": {
+		"data":    {},
+		"modules": {},
+		"outputs": {
+			"location": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"azurerm_resource_group.rg.location",
+					"azurerm_resource_group.rg",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"rg_name": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"azurerm_resource_group.rg.name",
+					"azurerm_resource_group.rg",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+		},
+		"providers": {},
+		"resources": {
+			"azurerm_resource_group": {
+				"rg": {
+					"config":       {},
+					"provisioners": null,
+					"references": {
+						"location": [
+							"var.location",
+						],
+						"name": [
+							"var.rg_name",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"location": {
+				"default":     null,
+				"description": "",
+			},
+			"rg_name": {
+				"default":     null,
+				"description": "",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"pip",
+	],
+	[
+		"rg",
+	],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

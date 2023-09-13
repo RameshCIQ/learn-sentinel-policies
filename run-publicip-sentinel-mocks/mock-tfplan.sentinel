@@ -1,0 +1,256 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":      {},
+		"path":      [],
+		"resources": {},
+	},
+
+	"module.pip": {
+		"data": {},
+		"path": [
+			"pip",
+		],
+		"resources": {
+			"azurerm_public_ip": {
+				"pip": {
+					0: {
+						"applied": {
+							"allocation_method":       "Static",
+							"ddos_protection_mode":    "VirtualNetworkInherited",
+							"ddos_protection_plan_id": null,
+							"domain_name_label":       null,
+							"edge_zone":               null,
+							"idle_timeout_in_minutes": 4,
+							"ip_tags":                 null,
+							"ip_version":              "IPv4",
+							"location":                "eastus",
+							"name":                    "test_trpolicypip",
+							"public_ip_prefix_id":     null,
+							"resource_group_name":     "test-trpolicy",
+							"reverse_fqdn":            null,
+							"sku":                     "Standard",
+							"sku_tier":                "Regional",
+							"tags": {
+								"environment": "prod",
+							},
+							"timeouts": null,
+							"zones":    null,
+						},
+						"destroy": false,
+						"diff": {
+							"allocation_method": {
+								"computed": false,
+								"new":      "Static",
+								"old":      "",
+							},
+							"ddos_protection_mode": {
+								"computed": false,
+								"new":      "VirtualNetworkInherited",
+								"old":      "",
+							},
+							"ddos_protection_plan_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"domain_name_label": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"edge_zone": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"fqdn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"idle_timeout_in_minutes": {
+								"computed": false,
+								"new":      "4",
+								"old":      "",
+							},
+							"ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_version": {
+								"computed": false,
+								"new":      "IPv4",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "eastus",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "test_trpolicypip",
+								"old":      "",
+							},
+							"public_ip_prefix_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "test-trpolicy",
+								"old":      "",
+							},
+							"reverse_fqdn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"sku": {
+								"computed": false,
+								"new":      "Standard",
+								"old":      "",
+							},
+							"sku_tier": {
+								"computed": false,
+								"new":      "Regional",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags.environment": {
+								"computed": false,
+								"new":      "prod",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"zones": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+
+	"module.rg": {
+		"data": {},
+		"path": [
+			"rg",
+		],
+		"resources": {
+			"azurerm_resource_group": {
+				"rg": {
+					0: {
+						"applied": {
+							"location":   "eastus",
+							"managed_by": null,
+							"name":       "test-trpolicy",
+							"tags":       null,
+							"timeouts":   null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "eastus",
+								"old":      "",
+							},
+							"managed_by": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "test-trpolicy",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"pip",
+	],
+	[
+		"rg",
+	],
+]
+
+terraform_version = "1.5.6"
+
+variables = {
+	"location": "eastus",
+	"rg_name":  "test-trpolicy",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

@@ -1,0 +1,571 @@
+terraform_version = "1.5.6"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"module.pip.azurerm_public_ip.pip": {
+			"address":        "module.pip.azurerm_public_ip.pip",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.pip",
+			"name":           "pip",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_public_ip",
+			"values": {
+				"allocation_method":       "Static",
+				"ddos_protection_mode":    "VirtualNetworkInherited",
+				"ddos_protection_plan_id": null,
+				"domain_name_label":       null,
+				"edge_zone":               null,
+				"idle_timeout_in_minutes": 4,
+				"ip_tags":                 null,
+				"ip_version":              "IPv4",
+				"location":                "eastus",
+				"name":                    "test_trpolicypip",
+				"public_ip_prefix_id":     null,
+				"resource_group_name":     "test-trpolicy",
+				"reverse_fqdn":            null,
+				"sku":                     "Standard",
+				"sku_tier":                "Regional",
+				"tags": {
+					"environment": "prod",
+				},
+				"timeouts": null,
+				"zones":    null,
+			},
+		},
+		"module.rg.azurerm_resource_group.rg": {
+			"address":        "module.rg.azurerm_resource_group.rg",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.rg",
+			"name":           "rg",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"tainted":        false,
+			"type":           "azurerm_resource_group",
+			"values": {
+				"location":   "eastus",
+				"managed_by": null,
+				"name":       "test-trpolicy",
+				"tags":       null,
+				"timeouts":   null,
+			},
+		},
+	},
+}
+
+variables = {
+	"location": {
+		"name":  "location",
+		"value": "eastus",
+	},
+	"rg_name": {
+		"name":  "rg_name",
+		"value": "test-trpolicy",
+	},
+}
+
+resource_changes = {
+	"module.pip.azurerm_public_ip.pip": {
+		"address": "module.pip.azurerm_public_ip.pip",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allocation_method":       "Static",
+				"ddos_protection_mode":    "VirtualNetworkInherited",
+				"ddos_protection_plan_id": null,
+				"domain_name_label":       null,
+				"edge_zone":               null,
+				"idle_timeout_in_minutes": 4,
+				"ip_tags":                 null,
+				"ip_version":              "IPv4",
+				"location":                "eastus",
+				"name":                    "test_trpolicypip",
+				"public_ip_prefix_id":     null,
+				"resource_group_name":     "test-trpolicy",
+				"reverse_fqdn":            null,
+				"sku":                     "Standard",
+				"sku_tier":                "Regional",
+				"tags": {
+					"environment": "prod",
+				},
+				"timeouts": null,
+				"zones":    null,
+			},
+			"after_unknown": {
+				"fqdn":       true,
+				"id":         true,
+				"ip_address": true,
+				"tags":       {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.pip",
+		"name":           "pip",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_public_ip",
+	},
+	"module.rg.azurerm_resource_group.rg": {
+		"address": "module.rg.azurerm_resource_group.rg",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"location":   "eastus",
+				"managed_by": null,
+				"name":       "test-trpolicy",
+				"tags":       null,
+				"timeouts":   null,
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.rg",
+		"name":           "rg",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_resource_group",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"azurerm": {
+				"expressions": {
+					"client_id": {
+						"constant_value": "37bb8605-2b6d-481b-9904-256d83eac90a",
+					},
+					"client_secret": {
+						"constant_value": "Yph8Q~mw~R9RPdvUFicf9ieKS4ORrcpfJZmwlcfQ",
+					},
+					"features": [
+						{},
+					],
+					"skip_provider_registration": {
+						"constant_value": true,
+					},
+					"subscription_id": {
+						"constant_value": "f2462315-1994-4dbf-abfc-701a023665b8",
+					},
+					"tenant_id": {
+						"constant_value": "a59d6e59-864b-4af8-8ea0-b4eb441cfbd9",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/azurerm",
+				"name":               "azurerm",
+				"version_constraint": "3.71.0",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"pip": {
+					"expressions": {
+						"location": {
+							"references": [
+								"module.rg.location",
+								"module.rg",
+							],
+						},
+						"pip_allocation_method": {
+							"constant_value": "Static",
+						},
+						"pip_name": {
+							"constant_value": "test_trpolicypip",
+						},
+						"resource_group_name": {
+							"references": [
+								"module.rg.rg_name",
+								"module.rg",
+							],
+						},
+						"tags": {
+							"constant_value": {
+								"environment": "prod",
+							},
+						},
+					},
+					"module": {
+						"outputs": {
+							"id": {
+								"expression": {
+									"references": [
+										"azurerm_public_ip.pip.id",
+										"azurerm_public_ip.pip",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "azurerm_public_ip.pip",
+								"expressions": {
+									"allocation_method": {
+										"references": [
+											"var.pip_allocation_method",
+										],
+									},
+									"domain_name_label": {
+										"references": [
+											"var.pip_domain_name_label",
+										],
+									},
+									"edge_zone": {
+										"references": [
+											"var.pip_edge_zone",
+										],
+									},
+									"idle_timeout_in_minutes": {
+										"references": [
+											"var.pip_idle_timeout_in_minutes",
+										],
+									},
+									"ip_tags": {
+										"references": [
+											"var.pip_ip_tags",
+										],
+									},
+									"ip_version": {
+										"references": [
+											"var.pip_ip_version",
+										],
+									},
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"var.pip_name",
+										],
+									},
+									"public_ip_prefix_id": {
+										"references": [
+											"var.public_ip_prefix_id",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"var.resource_group_name",
+										],
+									},
+									"reverse_fqdn": {
+										"references": [
+											"var.reverse_fqdn",
+										],
+									},
+									"sku": {
+										"references": [
+											"var.pip_sku",
+										],
+									},
+									"sku_tier": {
+										"references": [
+											"var.pip_sku_tier",
+										],
+									},
+									"tags": {
+										"references": [
+											"var.tags",
+										],
+									},
+									"zones": {
+										"references": [
+											"var.pip_zones",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "pip",
+								"provider_config_key": "azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_public_ip",
+							},
+						],
+						"variables": {
+							"location": {},
+							"pip_allocation_method": {
+								"default":     "Static",
+								"description": "Possible values are Static or Dynamic.",
+							},
+							"pip_domain_name_label": {},
+							"pip_edge_zone":         {},
+							"pip_idle_timeout_in_minutes": {
+								"description": "4 to 20 minutes",
+							},
+							"pip_ip_tags": {
+								"default": {},
+							},
+							"pip_ip_version": {
+								"default": "IPv4",
+							},
+							"pip_name": {},
+							"pip_sku": {
+								"default": "Standard",
+							},
+							"pip_sku_tier": {
+								"default": "Regional",
+							},
+							"pip_zones": {
+								"default": [],
+							},
+							"public_ip_prefix_id": {},
+							"resource_group_name": {},
+							"reverse_fqdn":        {},
+							"tags":                {},
+						},
+					},
+					"source": "../public_ip",
+				},
+				"rg": {
+					"expressions": {
+						"location": {
+							"constant_value": "eastus",
+						},
+						"rg_name": {
+							"constant_value": "test-trpolicy",
+						},
+					},
+					"module": {
+						"outputs": {
+							"location": {
+								"expression": {
+									"references": [
+										"azurerm_resource_group.rg.location",
+										"azurerm_resource_group.rg",
+									],
+								},
+							},
+							"rg_name": {
+								"expression": {
+									"references": [
+										"azurerm_resource_group.rg.name",
+										"azurerm_resource_group.rg",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "azurerm_resource_group.rg",
+								"expressions": {
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"var.rg_name",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "rg",
+								"provider_config_key": "azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_resource_group",
+							},
+						],
+						"variables": {
+							"location": {},
+							"rg_name":  {},
+						},
+					},
+					"source": "../rg",
+				},
+			},
+			"variables": {
+				"location": {},
+				"rg_name":  {},
+			},
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.pip",
+					"resources": [
+						{
+							"address":        "module.pip.azurerm_public_ip.pip",
+							"mode":           "managed",
+							"name":           "pip",
+							"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+							"schema_version": 0,
+							"sensitive_values": {
+								"tags": {},
+							},
+							"type": "azurerm_public_ip",
+							"values": {
+								"allocation_method":       "Static",
+								"ddos_protection_mode":    "VirtualNetworkInherited",
+								"ddos_protection_plan_id": null,
+								"domain_name_label":       null,
+								"edge_zone":               null,
+								"idle_timeout_in_minutes": 4,
+								"ip_tags":                 null,
+								"ip_version":              "IPv4",
+								"location":                "eastus",
+								"name":                    "test_trpolicypip",
+								"public_ip_prefix_id":     null,
+								"resource_group_name":     "test-trpolicy",
+								"reverse_fqdn":            null,
+								"sku":                     "Standard",
+								"sku_tier":                "Regional",
+								"tags": {
+									"environment": "prod",
+								},
+								"timeouts": null,
+								"zones":    null,
+							},
+						},
+					],
+				},
+				{
+					"address": "module.rg",
+					"resources": [
+						{
+							"address":          "module.rg.azurerm_resource_group.rg",
+							"mode":             "managed",
+							"name":             "rg",
+							"provider_name":    "registry.terraform.io/hashicorp/azurerm",
+							"schema_version":   0,
+							"sensitive_values": {},
+							"type":             "azurerm_resource_group",
+							"values": {
+								"location":   "eastus",
+								"managed_by": null,
+								"name":       "test-trpolicy",
+								"tags":       null,
+								"timeouts":   null,
+							},
+						},
+					],
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "module.pip.azurerm_public_ip.pip",
+		},
+		{
+			"attribute": [
+				"location",
+			],
+			"resource": "module.rg.azurerm_resource_group.rg",
+		},
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "module.rg.azurerm_resource_group.rg",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "module.pip.azurerm_public_ip.pip",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"allocation_method":       "Static",
+					"ddos_protection_mode":    "VirtualNetworkInherited",
+					"ddos_protection_plan_id": null,
+					"domain_name_label":       null,
+					"edge_zone":               null,
+					"idle_timeout_in_minutes": 4,
+					"ip_tags":                 null,
+					"ip_version":              "IPv4",
+					"location":                "eastus",
+					"name":                    "test_trpolicypip",
+					"public_ip_prefix_id":     null,
+					"resource_group_name":     "test-trpolicy",
+					"reverse_fqdn":            null,
+					"sku":                     "Standard",
+					"sku_tier":                "Regional",
+					"tags": {
+						"environment": "prod",
+					},
+					"timeouts": null,
+					"zones":    null,
+				},
+				"after_sensitive": {
+					"tags": {},
+				},
+				"after_unknown": {
+					"fqdn":       true,
+					"id":         true,
+					"ip_address": true,
+					"tags":       {},
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.pip",
+			"name":           "pip",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"type":           "azurerm_public_ip",
+		},
+		{
+			"address": "module.rg.azurerm_resource_group.rg",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"location":   "eastus",
+					"managed_by": null,
+					"name":       "test-trpolicy",
+					"tags":       null,
+					"timeouts":   null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.rg",
+			"name":           "rg",
+			"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+			"type":           "azurerm_resource_group",
+		},
+	],
+	"terraform_version": "1.5.6",
+	"variables": {
+		"location": {
+			"value": "eastus",
+		},
+		"rg_name": {
+			"value": "test-trpolicy",
+		},
+	},
+}

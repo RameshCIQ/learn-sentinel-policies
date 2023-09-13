@@ -1,0 +1,372 @@
+import "strings"
+
+providers = {
+	"azurerm": {
+		"alias": "",
+		"config": {
+			"client_id": {
+				"constant_value": "37bb8605-2b6d-481b-9904-256d83eac90a",
+			},
+			"client_secret": {
+				"constant_value": "Yph8Q~mw~R9RPdvUFicf9ieKS4ORrcpfJZmwlcfQ",
+			},
+			"features": [
+				{},
+			],
+			"skip_provider_registration": {
+				"constant_value": true,
+			},
+			"subscription_id": {
+				"constant_value": "f2462315-1994-4dbf-abfc-701a023665b8",
+			},
+			"tenant_id": {
+				"constant_value": "a59d6e59-864b-4af8-8ea0-b4eb441cfbd9",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/azurerm",
+		"module_address":      "",
+		"name":                "azurerm",
+		"provider_config_key": "azurerm",
+		"version_constraint":  "3.71.0",
+	},
+}
+
+resources = {
+	"module.pip.azurerm_public_ip.pip": {
+		"address": "module.pip.azurerm_public_ip.pip",
+		"config": {
+			"allocation_method": {
+				"references": [
+					"var.pip_allocation_method",
+				],
+			},
+			"domain_name_label": {
+				"references": [
+					"var.pip_domain_name_label",
+				],
+			},
+			"edge_zone": {
+				"references": [
+					"var.pip_edge_zone",
+				],
+			},
+			"idle_timeout_in_minutes": {
+				"references": [
+					"var.pip_idle_timeout_in_minutes",
+				],
+			},
+			"ip_tags": {
+				"references": [
+					"var.pip_ip_tags",
+				],
+			},
+			"ip_version": {
+				"references": [
+					"var.pip_ip_version",
+				],
+			},
+			"location": {
+				"references": [
+					"var.location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.pip_name",
+				],
+			},
+			"public_ip_prefix_id": {
+				"references": [
+					"var.public_ip_prefix_id",
+				],
+			},
+			"resource_group_name": {
+				"references": [
+					"var.resource_group_name",
+				],
+			},
+			"reverse_fqdn": {
+				"references": [
+					"var.reverse_fqdn",
+				],
+			},
+			"sku": {
+				"references": [
+					"var.pip_sku",
+				],
+			},
+			"sku_tier": {
+				"references": [
+					"var.pip_sku_tier",
+				],
+			},
+			"tags": {
+				"references": [
+					"var.tags",
+				],
+			},
+			"zones": {
+				"references": [
+					"var.pip_zones",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.pip",
+		"name":                "pip",
+		"provider_config_key": "module.pip:azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_public_ip",
+	},
+	"module.rg.azurerm_resource_group.rg": {
+		"address": "module.rg.azurerm_resource_group.rg",
+		"config": {
+			"location": {
+				"references": [
+					"var.location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.rg_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.rg",
+		"name":                "rg",
+		"provider_config_key": "module.rg:azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_resource_group",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"location": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "location",
+	},
+	"module.pip:location": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "location",
+	},
+	"module.pip:pip_allocation_method": {
+		"default":        "Static",
+		"description":    "Possible values are Static or Dynamic.",
+		"module_address": "module.pip",
+		"name":           "pip_allocation_method",
+	},
+	"module.pip:pip_domain_name_label": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_domain_name_label",
+	},
+	"module.pip:pip_edge_zone": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_edge_zone",
+	},
+	"module.pip:pip_idle_timeout_in_minutes": {
+		"default":        null,
+		"description":    "4 to 20 minutes",
+		"module_address": "module.pip",
+		"name":           "pip_idle_timeout_in_minutes",
+	},
+	"module.pip:pip_ip_tags": {
+		"default":        {},
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_ip_tags",
+	},
+	"module.pip:pip_ip_version": {
+		"default":        "IPv4",
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_ip_version",
+	},
+	"module.pip:pip_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_name",
+	},
+	"module.pip:pip_sku": {
+		"default":        "Standard",
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_sku",
+	},
+	"module.pip:pip_sku_tier": {
+		"default":        "Regional",
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_sku_tier",
+	},
+	"module.pip:pip_zones": {
+		"default":        [],
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "pip_zones",
+	},
+	"module.pip:public_ip_prefix_id": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "public_ip_prefix_id",
+	},
+	"module.pip:resource_group_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "resource_group_name",
+	},
+	"module.pip:reverse_fqdn": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "reverse_fqdn",
+	},
+	"module.pip:tags": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "tags",
+	},
+	"module.rg:location": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.rg",
+		"name":           "location",
+	},
+	"module.rg:rg_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "module.rg",
+		"name":           "rg_name",
+	},
+	"rg_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "rg_name",
+	},
+}
+
+outputs = {
+	"module.pip:id": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "module.pip",
+		"name":           "id",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"azurerm_public_ip.pip.id",
+				"azurerm_public_ip.pip",
+			],
+		},
+	},
+	"module.rg:location": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "module.rg",
+		"name":           "location",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"azurerm_resource_group.rg.location",
+				"azurerm_resource_group.rg",
+			],
+		},
+	},
+	"module.rg:rg_name": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "module.rg",
+		"name":           "rg_name",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"azurerm_resource_group.rg.name",
+				"azurerm_resource_group.rg",
+			],
+		},
+	},
+}
+
+module_calls = {
+	"pip": {
+		"config": {
+			"location": {
+				"references": [
+					"module.rg.location",
+					"module.rg",
+				],
+			},
+			"pip_allocation_method": {
+				"constant_value": "Static",
+			},
+			"pip_name": {
+				"constant_value": "test_trpolicypip",
+			},
+			"resource_group_name": {
+				"references": [
+					"module.rg.rg_name",
+					"module.rg",
+				],
+			},
+			"tags": {
+				"constant_value": {
+					"environment": "prod",
+				},
+			},
+		},
+		"count":              {},
+		"depends_on":         [],
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "pip",
+		"source":             "../public_ip",
+		"version_constraint": "",
+	},
+	"rg": {
+		"config": {
+			"location": {
+				"constant_value": "eastus",
+			},
+			"rg_name": {
+				"constant_value": "test-trpolicy",
+			},
+		},
+		"count":              {},
+		"depends_on":         [],
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "rg",
+		"source":             "../rg",
+		"version_constraint": "",
+	},
+}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
